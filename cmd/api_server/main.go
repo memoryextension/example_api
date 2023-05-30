@@ -243,6 +243,8 @@ func main() {
         http.HandleFunc("/lib/", OneLibraryHandler(libsConfig))
         
         http.HandleFunc("/version/", VersionHandler())
+        
+        http.HandleFunc("/healthz", k8sHealthHandler())
 
         fmt.Println("⇨ http serving on 8080")
         http.ListenAndServe(":8080", nil)
